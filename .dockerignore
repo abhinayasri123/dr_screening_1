@@ -1,0 +1,44 @@
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python cache & test artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.cache/
+.coverage
+htmlcov/
+
+# Node modules & temporary artifacts (stage 1 frontend-builder builds its own clean alpine dependencies)
+frontend/node_modules/
+frontend/dist/
+
+# Git & IDE configs
+.git/
+.gitignore
+.dockerignore
+.vscode/
+.idea/
+
+# Local logs, tunnels, binaries, and temporary files
+*.log
+cloudflared.exe
+*.db
+*.sqlite3
+*.bak
+
+# Uploads & generated reports (preserve clean empty folders; don't bake local test files)
+uploads/*
+!uploads/.gitkeep
+reports/*
+!reports/.gitkeep
+
+# Non-runtime documentation & experimental notebooks
+docs/
+notebooks/
+test_benchmark_dataset/

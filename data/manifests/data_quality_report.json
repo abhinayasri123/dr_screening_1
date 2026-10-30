@@ -1,0 +1,30 @@
+{
+  "dataset_name": "Diabetic Retinopathy Benchmark Suite",
+  "primary_source": "APTOS 2019 Blindness Detection",
+  "total_images_analyzed": 70,
+  "gradable_images_count": 0,
+  "ungradable_images_count": 70,
+  "corrupt_files_detected": 0,
+  "class_balance_ratio_max_min": 1.0,
+  "split_counts": {
+    "train": 40,
+    "validation": 15,
+    "test": 15
+  },
+  "class_counts_overall": {
+    "No DR": 14,
+    "Mild DR": 14,
+    "Moderate DR": 14,
+    "Severe DR": 14,
+    "Proliferative DR": 14
+  },
+  "metrics_summary": {
+    "min_blur_score": 3.85,
+    "avg_blur_score": 4.52,
+    "avg_luminance": 49.38
+  },
+  "leakage_verification": {
+    "duplicate_ids_across_splits": 0,
+    "leakage_detected": false
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "centralized": {
+    "accuracy": 0.2,
+    "precision": 0.04,
+    "recall": 0.2,
+    "f1": 0.06666666666666667,
+    "qwk": 0.0,
+    "loss": 1.6099125742912292,
+    "status": "Evaluated"
+  },
+  "federated": {
+    "accuracy": 0.2,
+    "precision": 0.04,
+    "recall": 0.2,
+    "f1": 0.06666666666666667,
+    "qwk": 0.0,
+    "loss": 1.6097983717918396,
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        6,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        6,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        6,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        6,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        6,
+        0,
+        0
+      ]
+    ],
+    "status": "Completed"
+  },
+  "history": [
+    {
+      "round": 0,
+      "global_accuracy": 0.2,
+      "global_f1": 0.06666666666666667,
+      "global_loss": 1.6097187995910645,
+      "round_label": "Round 0 (Initial)"
+    },
+    {
+      "round": 1,
+      "global_accuracy": 0.2,
+      "global_precision": 0.04,
+      "global_recall": 0.2,
+      "global_f1": 0.06666666666666667,
+      "global_qwk": 0.0,
+      "global_loss": 1.6097228527069092,
+      "hospital_metrics": {
+        "client_1": {
+          "loss": 1.6194061040878296,
+          "accuracy": 0.14285714285714285,
+          "macro_f1": 0.05714285714285714
+        },
+        "client_2": {
+          "loss": 1.6156598329544067,
+          "accuracy": 0.3076923076923077,
+          "macro_f1": 0.10666666666666666
+        },
+        "client_3": {
+          "loss": 1.6132736206054688,
+          "accuracy": 0.15384615384615385,
+          "macro_f1": 0.11636363636363636
+        }
+      }
+    },
+    {
+      "round": 2,
+      "global_accuracy": 0.2,
+      "global_precision": 0.04,
+      "global_recall": 0.2,
+      "global_f1": 0.06666666666666667,
+      "global_qwk": 0.0,
+      "global_loss": 1.609758734703064,
+      "hospital_metrics": {
+        "client_1": {
+          "loss": 1.6238387823104858,
+          "accuracy": 0.14285714285714285,
+          "macro_f1": 0.06153846153846154
+        },
+        "client_2": {
+          "loss": 1.6041324138641357,
+          "accuracy": 0.3076923076923077,
+          "macro_f1": 0.11428571428571428
+        },
+        "client_3": {
+          "loss": 1.6117000579833984,
+          "accuracy": 0.15384615384615385,
+          "macro_f1": 0.09714285714285714
+        }
+      }
+    },
+    {
+      "round": 3,
+      "global_accuracy": 0.2,
+      "global_precision": 0.04,
+      "global_recall": 0.2,
+      "global_f1": 0.06666666666666667,
+      "global_qwk": 0.0,
+      "global_loss": 1.6097983717918396,
+      "hospital_metrics": {
+        "client_1": {
+          "loss": 1.5920251607894897,
+          "accuracy": 0.2857142857142857,
+          "macro_f1": 0.20606060606060606
+        },
+        "client_2": {
+          "loss": 1.6129721403121948,
+          "accuracy": 0.23076923076923078,
+          "macro_f1": 0.1282051282051282
+        },
+        "client_3": {
+          "loss": 1.596780776977539,
+          "accuracy": 0.15384615384615385,
+          "macro_f1": 0.09714285714285714
+        }
+      }
+    }
+  ],
+  "run_id": "fl_run_1793282084",
+  "device": "CPU",
+  "timestamp": "2026-10-29 19:34:20"
+}

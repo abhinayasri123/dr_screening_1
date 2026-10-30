@@ -1,0 +1,4 @@
+split,total_images,grade_0_no_dr,grade_1_mild,grade_2_moderate,grade_3_severe,grade_4_proliferative,referable_dr_count,non_referable_count,mean_blur_score,mean_luminance
+train,40,8,8,8,8,8,24,16,4.5,49.37
+validation,15,3,3,3,3,3,9,6,4.55,49.38
+test,15,3,3,3,3,3,9,6,4.55,49.38

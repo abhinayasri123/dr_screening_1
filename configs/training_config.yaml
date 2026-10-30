@@ -1,0 +1,75 @@
+# ============================================================
+# Training Configuration
+# ============================================================
+
+data:
+  dataset: "aptos2019"                 # Dataset identifier
+  data_dir: "data/retinal"
+  ehr_dir: "data/ehr"
+  image_size: 300
+  num_workers: 4
+  pin_memory: true
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+  random_seed: 42
+  class_names:
+    - "No DR"
+    - "Mild"
+    - "Moderate"
+    - "Severe"
+    - "Proliferative DR"
+
+augmentation:
+  train:
+    horizontal_flip: true
+    vertical_flip: false               # NOT applied — not medically appropriate for fundus
+    rotation_degrees: 15
+    brightness: 0.2
+    contrast: 0.2
+    saturation: 0.1
+    hue: 0.05
+    random_crop: false
+    gaussian_blur: true
+    blur_kernel: 3
+    grid_distortion: false             # Disabled — would distort pathology
+  val:
+    center_crop: false
+  test:
+    tta: false                          # Test-Time Augmentation (optional)
+
+training:
+  epochs: 30
+  batch_size: 16
+  learning_rate: 1.0e-4
+  weight_decay: 1.0e-5
+  optimizer: "adamw"
+  scheduler: "cosine"
+  warmup_epochs: 2
+  gradient_clip: 1.0
+  mixed_precision: true                # AMP for faster training
+  early_stopping_patience: 7
+  early_stopping_metric: "val_qwk"    # Quadratic Weighted Kappa
+  loss: "cross_entropy_weighted"       # weighted for class imbalance
+
+class_balancing:
+  strategy: "class_weights"           # options: oversampling, class_weights, none
+  use_weighted_sampler: false         # use WeightedRandomSampler
+
+evaluation:
+  primary_metric: "qwk"               # Quadratic Weighted Kappa
+  metrics:
+    - accuracy
+    - weighted_f1
+    - qwk
+    - macro_auc
+    - sensitivity_per_class
+    - specificity_per_class
+  confusion_matrix: true
+  roc_curve: true
+  pr_curve: true
+
+logging:
+  log_dir: "logs/"
+  log_interval: 10                    # Log every N batches
+  save_plots: true

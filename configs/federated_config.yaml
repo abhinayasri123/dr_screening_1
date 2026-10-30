@@ -1,0 +1,42 @@
+# ============================================================
+# Federated Learning Configuration
+# ============================================================
+
+simulation:
+  num_clients: 3                       # Simulated hospitals
+  client_names:
+    - "Hospital_A"
+    - "Hospital_B"
+    - "Hospital_C"
+  partition_strategy: "iid"           # options: iid, non_iid
+  non_iid_alpha: 0.5                   # Dirichlet alpha for non-IID (lower = more skewed)
+  random_seed: 42
+
+server:
+  num_rounds: 10                       # Federated rounds
+  strategy: "fedavg"                   # options: fedavg, fedprox, fedopt
+  min_fit_clients: 2                   # Minimum clients per round
+  min_evaluate_clients: 2
+  min_available_clients: 3
+  fraction_fit: 1.0                    # Fraction of clients to train each round
+  fraction_evaluate: 1.0
+  fedprox_mu: 0.01                     # FedProx regularization (if used)
+
+client:
+  local_epochs: 3                      # Local training epochs per round
+  batch_size: 16
+  learning_rate: 1.0e-4
+  optimizer: "sgd"                     # SGD recommended for FL
+  momentum: 0.9
+  weight_decay: 1.0e-4
+
+privacy:
+  use_dp: false                        # Differential Privacy (set true for DP-FL)
+  dp_noise_multiplier: 1.0
+  dp_max_grad_norm: 1.0
+  dp_target_epsilon: 10.0
+
+comparison:
+  run_centralized_baseline: true       # Train centralized model for comparison
+  save_round_metrics: true             # Save per-round evaluation metrics
+  output_dir: "logs/federated/"

@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  dr-screening-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dr_screening_system
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - APTOS_DATA_DIR=/app/data/retinal
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./checkpoints:/app/checkpoints
+      - ./outputs:/app/outputs
+    restart: unless-stopped

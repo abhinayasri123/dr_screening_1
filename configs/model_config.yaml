@@ -1,0 +1,42 @@
+# ============================================================
+# Model Configuration
+# ============================================================
+
+cnn:
+  backbone: "efficientnet_b3"         # EfficientNet-B3 pretrained on ImageNet
+  pretrained: true
+  image_size: 300                      # EfficientNet-B3 native resolution
+  num_classes: 5                       # APTOS: 0-No DR, 1-Mild, 2-Moderate, 3-Severe, 4-Proliferative
+  dropout_rate: 0.3
+  freeze_backbone_epochs: 2            # Freeze backbone for first N epochs (warm-up)
+  feature_dim: 1536                    # EfficientNet-B3 penultimate feature dim
+
+ehr_encoder:
+  input_dim: 13                        # Number of EHR features (see ehr_schema.md)
+  hidden_dims: [128, 64]
+  output_dim: 64
+  dropout_rate: 0.2
+  use_batch_norm: true
+
+multimodal:
+  image_feature_dim: 1536
+  ehr_feature_dim: 64
+  fusion_dim: 256
+  fusion_type: "attention"             # options: concat, attention, gated
+  num_classes: 5
+  dropout_rate: 0.3
+
+uncertainty:
+  mc_dropout_passes: 20                # Number of Monte Carlo forward passes
+  mc_dropout_rate: 0.3
+
+gradcam:
+  method: "gradcam++"                  # gradcam, gradcam++, scorecam
+  target_layer: "features.8"          # EfficientNet-B3 last conv block
+  alpha: 0.5                           # Overlay transparency
+
+checkpoints:
+  save_dir: "checkpoints/"
+  best_model_name: "best_cnn_model.pth"
+  multimodal_model_name: "best_multimodal_model.pth"
+  federated_model_name: "federated_global_model.pth"

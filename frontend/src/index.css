@@ -1,0 +1,395 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-main: #070707;
+    --bg-sidebar: #0B0B0B;
+    --card-surface: #121212;
+    --card-secondary: #191919;
+    --elevated-surface: #191919;
+    --input-bg: #0F0F0F;
+    --border-color: #292929;
+    --text-primary: #F5F0E6;
+    --text-body: #D0CCC3;
+    --text-muted: #85817A;
+    --btn-primary: #E8E1D5;
+    --btn-primary-text: #111111;
+    --accent-sage: #81958D;
+  }
+
+  body {
+    background-color: #070707;
+    color: #D0CCC3;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Bold Cream-White Headings — Midnight Ivory */
+  h1, h2, h3, h4, h5, h6 {
+    color: #F5F0E6 !important;
+    font-family: 'Manrope', 'Inter', sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.015em;
+    line-height: 1.35;
+    text-shadow: none !important;
+    overflow-wrap: break-word;
+  }
+
+  /* Custom subtle dark scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #070707;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #292929;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #81958D;
+  }
+}
+
+@layer components {
+  /* ========================================================
+     MIDNIGHT IVORY CARDS & PANELS (#121212, #191919)
+     95% opaque charcoal cards, light backdrop blur, thin border (#292929)
+     Minimal shadows, NO neon or colourful gradients
+     ======================================================== */
+  .glass-card,
+  .dark-glass-panel {
+    background: rgba(18, 18, 18, 0.95) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid #292929 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+    border-radius: 10px;
+    color: #F5F0E6;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .glass-card:hover,
+  .dark-glass-panel:hover {
+    background: rgba(25, 25, 25, 0.98) !important;
+    border-color: rgba(129, 149, 141, 0.40) !important;
+  }
+
+  .glass-card-header,
+  .glass-card-footer {
+    background: rgba(15, 15, 15, 0.95) !important;
+    border-color: #292929 !important;
+  }
+
+  /* Matte-Black Midnight Sidebar (#0B0B0B) */
+  .glass-sidebar {
+    background: rgba(11, 11, 11, 0.96) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-right: 1px solid #292929 !important;
+  }
+
+  /* Modals and Overlays */
+  .fixed.inset-0 > div,
+  .modal-surface {
+    background-color: rgba(18, 18, 18, 0.98) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border: 1px solid #292929 !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8) !important;
+    color: #F5F0E6;
+  }
+
+  /* ========================================================
+     MAP STANDARD LIGHT / TAILWIND BACKGROUNDS TO CHARCOAL
+     ======================================================== */
+  .bg-white {
+    background-color: rgba(18, 18, 18, 0.95) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-color: #292929 !important;
+    color: #F5F0E6;
+  }
+
+  .bg-slate-50,
+  .bg-sky-50,
+  .bg-blue-50,
+  .bg-gray-50 {
+    background-color: rgba(15, 15, 15, 0.90) !important;
+    border-color: #292929 !important;
+  }
+
+  .bg-slate-100,
+  .bg-sky-100,
+  .bg-blue-100,
+  .bg-gray-100 {
+    background-color: rgba(25, 25, 25, 0.90) !important;
+    border-color: #292929 !important;
+  }
+
+  .bg-slate-200,
+  .bg-sky-200,
+  .bg-blue-200,
+  .bg-gray-200 {
+    background-color: rgba(28, 28, 28, 0.90) !important;
+    border-color: #292929 !important;
+  }
+
+  .bg-slate-300,
+  .bg-sky-300,
+  .bg-blue-300,
+  .bg-gray-300 {
+    background-color: rgba(35, 35, 35, 0.95) !important;
+    border-color: #292929 !important;
+  }
+
+  /* Hover states for card rows */
+  .hover\:bg-slate-50:hover,
+  .hover\:bg-sky-50:hover,
+  .hover\:bg-blue-50:hover,
+  .hover\:bg-gray-50:hover,
+  .hover\:bg-slate-100:hover,
+  .hover\:bg-sky-100:hover,
+  .hover\:bg-blue-100:hover,
+  .hover\:bg-gray-100:hover {
+    background-color: rgba(28, 28, 28, 0.75) !important;
+  }
+
+  /* Thin borders across utility classes */
+  .border-slate-200,
+  .border-slate-100,
+  .border-slate-300,
+  .border-sky-200,
+  .border-gray-200 {
+    border-color: #292929 !important;
+  }
+
+  /* ========================================================
+     MIDNIGHT IVORY TYPOGRAPHY
+     Main text: #F5F0E6
+     Body text: #D0CCC3
+     Muted text: #85817A
+     Subtle accent: #81958D
+     ======================================================== */
+  .text-slate-900,
+  .text-slate-800,
+  .text-gray-900,
+  .text-gray-800,
+  .text-sky-900,
+  .text-sky-800,
+  .text-blue-900,
+  .text-blue-800,
+  .text-primary-900,
+  .text-primary-800,
+  .text-white {
+    color: #F5F0E6 !important;
+  }
+
+  .text-slate-700,
+  .text-gray-700,
+  .text-sky-700,
+  .text-blue-700,
+  .text-slate-600,
+  .text-gray-600,
+  .text-sky-600,
+  .text-blue-600 {
+    color: #D0CCC3 !important;
+  }
+
+  .text-slate-500,
+  .text-slate-400,
+  .text-gray-500,
+  .text-gray-400,
+  .text-sky-500,
+  .text-sky-400 {
+    color: #85817A !important;
+  }
+
+  /* Subtle sage accent text */
+  .text-primary-600 {
+    color: #81958D !important;
+  }
+  .text-primary-600:hover,
+  .hover\:text-primary-700:hover {
+    color: #A4B9B0 !important;
+  }
+
+  /* ========================================================
+     BUTTONS & ACTIONS — MIDNIGHT IVORY
+     Primary button: #E8E1D5
+     Button text: #111111
+     Hover: #F5F0E6
+     NO neon, no colourful gradients
+     ======================================================== */
+  .bg-primary-600,
+  .bg-blue-600 {
+    background: #E8E1D5 !important;
+    color: #111111 !important;
+    font-weight: 600 !important;
+    border: 1px solid #E8E1D5 !important;
+    box-shadow: none !important;
+    transition: all 0.15s ease;
+  }
+
+  .bg-primary-600:hover,
+  .bg-blue-600:hover,
+  .hover\:bg-primary-700:hover,
+  .hover\:bg-blue-700:hover {
+    background: #F5F0E6 !important;
+    color: #000000 !important;
+    border-color: #F5F0E6 !important;
+    transform: none !important;
+  }
+
+  .bg-primary-600:focus-visible,
+  .bg-blue-600:focus-visible,
+  .hover\:bg-primary-700:focus-visible,
+  .hover\:bg-blue-700:focus-visible {
+    outline: 2px solid #81958D !important;
+    outline-offset: 2px;
+  }
+
+  .bg-primary-50 {
+    background-color: rgba(129, 149, 141, 0.12) !important;
+    color: #F5F0E6 !important;
+    border-color: rgba(129, 149, 141, 0.25) !important;
+  }
+
+  /* Secondary & outline buttons */
+  .bg-white.border,
+  .bg-white.border-slate-300 {
+    background: #191919 !important;
+    color: #F5F0E6 !important;
+    border: 1px solid #292929 !important;
+  }
+  .bg-white.border:hover,
+  .bg-white.border-slate-300:hover {
+    background: #222222 !important;
+    border-color: #81958D !important;
+  }
+
+  /* ========================================================
+     FORM CONTROLS, INPUTS & DROPDOWNS (#0F0F0F, #292929)
+     ======================================================== */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="date"],
+  select,
+  textarea {
+    background-color: #0F0F0F !important;
+    border: 1px solid #292929 !important;
+    color: #F5F0E6 !important;
+    border-radius: 6px;
+    font-size: 0.875rem;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus,
+  input[type="number"]:focus,
+  input[type="date"]:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #81958D !important;
+    box-shadow: 0 0 0 1px #81958D !important;
+    outline: none !important;
+  }
+
+  select option {
+    background-color: #121212 !important;
+    color: #F5F0E6 !important;
+  }
+
+  /* ========================================================
+     MIDNIGHT TABLES & DATA ROWS
+     ======================================================== */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  table thead tr {
+    background-color: rgba(15, 15, 15, 0.95) !important;
+    color: #85817A !important;
+    border-bottom: 1px solid #292929 !important;
+  }
+
+  table tbody tr {
+    border-bottom: 1px solid rgba(41, 41, 41, 0.8) !important;
+    transition: background-color 0.12s ease;
+  }
+
+  table tbody tr:hover {
+    background-color: rgba(25, 25, 25, 0.60) !important;
+  }
+
+  table td, table th {
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  /* ========================================================
+     RESTRAINED SEVERITY & STATUS INDICATORS
+     Sophisticated clinical tones, no fluorescent neon
+     ======================================================== */
+  .bg-emerald-100 {
+    background-color: rgba(129, 149, 141, 0.15) !important;
+    color: #A8C4B8 !important;
+    border: 1px solid rgba(129, 149, 141, 0.35) !important;
+  }
+  .text-emerald-800 {
+    color: #A8C4B8 !important;
+  }
+
+  .bg-amber-100 {
+    background-color: rgba(217, 119, 6, 0.15) !important;
+    color: #FBBF24 !important;
+    border: 1px solid rgba(217, 119, 6, 0.35) !important;
+  }
+  .text-amber-800 {
+    color: #FBBF24 !important;
+  }
+
+  .bg-rose-100, .bg-red-100 {
+    background-color: rgba(220, 38, 38, 0.15) !important;
+    color: #F87171 !important;
+    border: 1px solid rgba(220, 38, 38, 0.35) !important;
+  }
+  .text-rose-800, .text-red-800 {
+    color: #F87171 !important;
+  }
+
+  .bg-yellow-100 {
+    background-color: rgba(234, 179, 8, 0.15) !important;
+    color: #FACC15 !important;
+    border: 1px solid rgba(234, 179, 8, 0.35) !important;
+  }
+  .text-yellow-800 {
+    color: #FACC15 !important;
+  }
+
+  .bg-purple-100 {
+    background-color: rgba(129, 149, 141, 0.15) !important;
+    color: #D0CCC3 !important;
+    border: 1px solid #292929 !important;
+  }
+  .text-purple-800 {
+    color: #D0CCC3 !important;
+  }
+
+  /* ========================================================
+     PRESERVE PURE NATURAL BLACK FOR RETINAL IMAGES & HEATMAPS
+     ======================================================== */
+  .bg-black {
+    background-color: #000000 !important;
+  }
+  .bg-slate-900 {
+    background-color: #070707 !important;
+  }
+}

@@ -1,0 +1,89 @@
+# Git ignore rules
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# PyTorch checkpoints (allow verified production model weights, ignore arbitrary training dumps)
+checkpoints/*
+!checkpoints/.gitkeep
+!checkpoints/best_cnn_model.pth
+!checkpoints/retinal_detector.pth
+!checkpoints/best_multimodal_model.pth
+!checkpoints/federated_global_model.pth
+checkpoints/*.pt
+
+# Database
+*.db
+*.sqlite3
+
+# Uploads (patient images — never commit)
+uploads/*
+!uploads/.gitkeep
+
+# Reports (generated patient reports — never commit)
+reports/*
+!reports/.gitkeep
+
+# Logs and binaries
+logs/*
+!logs/.gitkeep
+*.log
+cloudflared.exe
+*.bak
+
+# Data (download separately per dataset license)
+data/retinal/train/*
+data/retinal/validation/*
+data/retinal/test/*
+!data/retinal/.gitkeep
+
+# Frontend
+node_modules/
+frontend/dist/
+frontend/.env
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Kaggle credentials
+kaggle.json

@@ -1,0 +1,48 @@
+# ============================================================
+# Application Configuration
+# ============================================================
+
+app:
+  title: "DR Screening — AI Clinical Decision Support"
+  description: "Early Disease Risk Prediction from Electronic Health Records via CNN-based Radiographic Classification for Diabetic Retinopathy Screening"
+  version: "1.0.0"
+  debug: true
+  cors_origins:
+    - "http://localhost:5173"          # Vite dev server
+    - "http://localhost:3000"
+    - "http://127.0.0.1:5173"
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+  reload: true
+
+database:
+  url: "sqlite+aiosqlite:///./dr_screening.db"
+  echo: false
+
+auth:
+  secret_key: "CHANGE_ME_IN_PRODUCTION_USE_STRONG_RANDOM_KEY"
+  algorithm: "HS256"
+  access_token_expire_minutes: 480    # 8 hours
+
+upload:
+  upload_dir: "uploads/"
+  max_file_size_mb: 20
+  allowed_extensions:
+    - ".jpg"
+    - ".jpeg"
+    - ".png"
+    - ".tiff"
+    - ".bmp"
+
+inference:
+  model_mode: "multimodal"             # options: image_only, ehr_only, multimodal
+  device: "auto"                       # auto, cpu, cuda
+  use_demo_model: true                 # Use demo random-init model if checkpoint missing
+  demo_disclaimer: "⚠️ DEMO MODE: No trained model checkpoint found. Using randomly initialized weights. Predictions are not medically valid. Train the model first using scripts/train.py."
+
+medical_disclaimer: >
+  This system is an AI-based clinical decision-support and screening tool and
+  is not a replacement for professional medical diagnosis. Final clinical
+  decisions must be made by qualified healthcare professionals.
